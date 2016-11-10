@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var jade = require('gulp-jade');
 var sass = require('gulp-sass');
 var bs = require('browser-sync').create();
+var errorNotify = require('gulp-error-notifier');
 
 //Options
 var sassOptions = {
@@ -23,6 +24,7 @@ gulp.task('browser-sync', function () {
 //Task jade to HTML
 gulp.task('jade', function() {
     gulp.src('./src/*.jade')
+    .pipe(errorNotify())
     .pipe(jade({
         pretty: true
     }))
